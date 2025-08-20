@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.egg
+*.manifest
+*.spec
+
+# Virtual env
+.venv/
+env/
+venv/
+ENV/
+
+# IDEs / editors
+.vscode/
+.idea/
+*.swp
+
+# Django / DRF
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+
+# Environment
+.env
+*.secret
+secrets.json
+
+# Coverage / testing
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# Docker
+pgdata/

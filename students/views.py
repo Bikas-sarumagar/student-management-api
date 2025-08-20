@@ -4,6 +4,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from .models import Student
 from .serializers import StudentSerializer
+from .permissions import IsStaffOrReadOnly
 
 class StudentViewSet(viewsets.ModelViewSet):
     queryset = Student.objects.all()
@@ -13,3 +14,4 @@ class StudentViewSet(viewsets.ModelViewSet):
     search_fields = ['name', 'student_class']
     Ordering_fields = ['roll', 'name', 'student_class', "dob"]
     ordering = ['roll']
+    permission_classes = [IsStaffOrReadOnly]

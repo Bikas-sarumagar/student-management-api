@@ -39,15 +39,21 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # Assuming you have a Django REST Framework app
     # 'django-filters',  # Assuming you have django-filters installed
-    
+    'drf_spectacular',  # For API documentation
     # Add your apps here
     "students",
 ]
 
 REST_FRAMEWORK = {
-    "DEFAULT_PERMISSION_CLASSES": [
-        "rest_framework.permissions.AllowAny",   # Day 1: keep open; we’ll add JWT on Day 2
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
+    
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",   # Day 1: keep open; we’ll add JWT on Day 2
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    
     "DEFAULT_FILTER_BACKENDS": [
         "django_filters.rest_framework.DjangoFilterBackend",
         "rest_framework.filters.SearchFilter",
@@ -56,6 +62,12 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.PageNumberPagination",
     "PAGE_SIZE": 10,
 }
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Student Management API",
+    "DESCRIPTION": "API for managing students in a school system",
+    "VERSION": "1.0.0",
+}            
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
